@@ -37,10 +37,15 @@ public class Main {
 
                 else if (i.equalsIgnoreCase("check")) {
                     canNext = true;
-                    FileInputStream file1 = new FileInputStream("input.txt");
-                    ObjectInputStream input = new ObjectInputStream(file1);
-                    Geometry gg = (Geometry) input.readObject();
-                    System.out.printf("X = %s \t Result = %s\n", gg.x, gg.result);
+                    try{
+                        FileInputStream file1 = new FileInputStream("input.txt");
+                        ObjectInputStream input = new ObjectInputStream(file1);
+                        Geometry gg = (Geometry) input.readObject();
+                        System.out.printf("X = %s \t Result = %s\n", gg.x, gg.result);
+                    }
+                    catch (IOException ex){
+                        System.out.println(ex.getMessage());
+                    }
                 }
                 else if(i.equalsIgnoreCase("out")){
                     break;
